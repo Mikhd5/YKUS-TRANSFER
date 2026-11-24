@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0d">
+  <meta name="description" content="YKUS TRANSFER — пасажирські перевезення із Закарпаття до Польщі, Чехії та Словаччини. Трансфери до аеропортів і доставка посилок.">
+  <meta property="og:title" content="YKUS TRANSFER — із Закарпаття до Європи">
+  <meta property="og:description" content="Комфортні міжнародні перевезення, трансфери до аеропортів і доставка посилок.">
+  <meta property="og:type" content="website">
+  <title>YKUS TRANSFER — із Закарпаття до Європи</title>
+  <link rel="preload" as="image" href="assets/hero-carpathians.webp" fetchpriority="high">
+  <style>
+    :root{
+      --bg:#090a0d;--bg-soft:#101216;--panel:#15181d;--panel-2:#1c2026;--text:#f8f8f8;--muted:#a8adb6;
+      --red:#ed2638;--red-dark:#a90e1d;--line:rgba(255,255,255,.13);--radius:28px;--max:1240px;
+      --shadow:0 22px 65px rgba(0,0,0,.34);--header-h:86px
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 18px)}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,"Segoe UI",Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{color:inherit}img{display:block;max-width:100%}
+    .wrap{width:min(var(--max),calc(100% - 52px));margin-inline:auto}
+    .section{padding:104px 0;position:relative;scroll-margin-top:var(--header-h)}
+    .kicker{display:flex;align-items:center;gap:11px;color:#ff6370;font-size:11px;font-weight:850;letter-spacing:.2em;text-transform:uppercase}
+    .kicker:before{content:"";width:29px;height:2px;border-radius:9px;background:var(--red)}
+    .section-title{font-size:clamp(34px,4.2vw,58px);line-height:1.04;letter-spacing:-.05em;margin:17px 0 15px;font-weight:900}
+    .section-title em{font-style:normal;color:var(--red)}
+    .section-lead{max-width:620px;color:var(--muted);font-size:15px;margin:0}
+    .btn{min-height:51px;display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:13px 23px;border:1px solid transparent;border-radius:999px;font-size:13px;font-weight:850;cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}
+    .btn svg{width:18px;height:18px;flex:none}
+    .btn-primary{color:white;background:linear-gradient(135deg,#ff3d4e,#b50d1f);box-shadow:0 10px 27px rgba(237,38,56,.25),inset 0 1px rgba(255,255,255,.28)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 15px 34px rgba(237,38,56,.34)}
+    .btn-ghost{border-color:rgba(255,255,255,.34);background:rgba(8,9,12,.25);color:#fff;backdrop-filter:blur(10px)}
+    .btn-ghost:hover{border-color:var(--red);background:rgba(237,38,56,.1)}
+    :focus-visible{outline:3px solid #ff6976;outline-offset:3px}
+
+    /* Branded loading screen */
+    .preloader{position:fixed;z-index:9999;inset:0;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 42%,#2a0e14 0%,#111318 42%,#07080a 100%);transition:opacity .55s ease,visibility .55s ease}
+    .preloader:before,.preloader:after{content:"";position:absolute;width:min(76vw,720px);height:min(76vw,720px);border:1px solid rgba(237,38,56,.12);border-radius:50%;pointer-events:none}
+    .preloader:after{width:min(58vw,540px);height:min(58vw,540px);border-color:rgba(255,255,255,.07)}
+    .preloader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-content{position:relative;z-index:1;width:min(360px,76vw);text-align:center}
+    .loader-logo{width:100%;height:auto;max-height:180px;object-fit:contain;filter:drop-shadow(0 12px 32px rgba(0,0,0,.38));animation:logoFloat 2.4s ease-in-out infinite}
+    .loader-line{height:3px;margin:25px auto 13px;width:74%;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+    .loader-line span{display:block;width:38%;height:100%;border-radius:99px;background:linear-gradient(90deg,#a60d1d,#ff3c4d);box-shadow:0 0 15px #ed2638;animation:loading 1.15s ease-in-out infinite}
+    .loader-caption{font-size:10px;font-weight:850;letter-spacing:.26em;color:#c9cbd0;text-transform:uppercase}
+    @keyframes loading{0%{transform:translateX(-120%)}100%{transform:translateX(300%)}}
+    @keyframes logoFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+    /* Header / brand */
+    .header{height:var(--header-h);position:fixed;z-index:100;inset:0 0 auto;background:rgba(7,8,10,.82);backdrop-filter:blur(18px);border-bottom:1px solid rgba(255,255,255,.08);transition:background .25s,box-shadow .25s}
+    .header.scrolled{background:rgba(7,8,10,.96);box-shadow:0 12px 35px rgba(0,0,0,.35)}
+    .header-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:22px}
+    .brand{display:inline-flex;align-items:center;flex:0 0 auto;width:170px}
+    .brand img{width:100%;height:68px;object-fit:contain;object-position:left center}
+    .nav{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.7vw,24px)}
+    .nav a{position:relative;font-size:11px;font-weight:800;color:#d7d9de;white-space:nowrap;transition:color .2s}
+    .nav a:hover,.nav a.active{color:#fff}
+    .nav a.active:after{content:"";position:absolute;left:0;right:0;bottom:-12px;height:2px;border-radius:5px;background:var(--red)}
+    .header-actions{display:flex;align-items:center;gap:9px;flex:0 0 auto}
+    .social{width:37px;height:37px;border:1px solid rgba(255,255,255,.25);border-radius:50%;display:grid;place-items:center;color:#fff;transition:.2s}
+    .social:hover{border-color:var(--red);color:#ff6976;transform:translateY(-2px)}
+    .social svg{width:17px;height:17px}
+    .header-phone{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px;font-size:12px;font-weight:900;white-space:nowrap}
+    .header-phone b{color:var(--red);font-size:15px}
+    .menu-btn{display:none;width:44px;height:44px;border:1px solid rgba(255,255,255,.2);border-radius:15px;background:#ffffff0d;align-items:center;justify-content:center;font-size:22px;cursor:pointer}
+
+    /* Hero */
+    .hero{position:relative;min-height:790px;display:flex;align-items:center;overflow:hidden;padding:calc(var(--header-h) + 62px) 0 47px;background:#12151a}
+    .hero:before{content:"";position:absolute;inset:0;background-image:linear-gradient(90deg,rgba(5,7,10,.94) 0%,rgba(5,7,10,.82) 31%,rgba(5,7,10,.35) 61%,rgba(5,7,10,.1) 100%),linear-gradient(0deg,#090a0d 0%,transparent 24%,rgba(4,5,7,.12) 100%),url("assets/hero-carpathians.webp");background-size:cover;background-position:center 54%;transform:scale(1.015)}
+    .hero:after{content:"";position:absolute;inset:auto 0 0;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);opacity:.8}
+    .hero-content{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,350px);align-items:center;gap:clamp(30px,5vw,76px)}
+    .hero-copy{max-width:720px}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:#eceef0;font-size:11px;font-weight:850;letter-spacing:.22em;text-transform:uppercase}
+    .eyebrow i{width:28px;height:2px;border-radius:3px;background:var(--red)}
+    .hero h1{font-size:clamp(52px,7vw,94px);line-height:.91;letter-spacing:-.07em;text-transform:uppercase;font-weight:950;margin:23px 0 21px}
+    .hero h1 span{display:block;color:var(--red)}
+    .hero-lead{font-size:clamp(16px,1.8vw,21px);line-height:1.42;color:#eceef0;max-width:570px;margin:0 0 23px}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:29px}
+    .hero-tag{display:inline-flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(9,11,14,.52);backdrop-filter:blur(10px);font-size:10px;font-weight:850;color:#f2f3f4}
+    .hero-tag i{color:#ff5b69;font-style:normal;font-size:16px}
+    .hero-buttons{display:flex;flex-wrap:wrap;gap:11px}
+    .hero-countries{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}
+    .hero-country{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid rgba(255,255,255,.24);border-radius:999px;background:rgba(11,13,16,.55);font-size:11px;font-weight:850}
+    .flag-mini{display:inline-flex;width:23px;height:23px;flex:none;border-radius:50%;overflow:hidden;border:1px solid rgba(255,255,255,.62);box-shadow:0 2px 8px rgba(0,0,0,.4);vertical-align:middle}
+    .flag-mini svg,.flag-orb svg,.flag-small svg,.about-countries .flag-mini svg{display:block;width:100%;height:100%}
+    .flag-svg{display:block;width:100%;height:100%}
+    .hero-card{justify-self:end;width:100%;padding:24px;border:1px solid rgba(255,255,255,.32);border-radius:28px;background:linear-gradient(145deg,rgba(17,19,23,.86),rgba(17,18,21,.68));backdrop-filter:blur(18px);box-shadow:var(--shadow)}
+    .hero-card-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .hero-card-icon{width:42px;height:42px;border-radius:14px;background:rgba(237,38,56,.14);display:grid;place-items:center;color:#ff6370;font-size:21px}
+    .hero-card h2{font-size:18px;line-height:1.2;margin:0}
+    .hero-card p{font-size:12px;color:#c1c5cb;margin:0 0 15px}
+    .hero-card a{display:flex;align-items:center;justify-content:space-between;padding:12px 13px;margin-top:8px;border:1px solid rgba(255,255,255,.16);border-radius:14px;background:rgba(255,255,255,.045);font-size:12px;font-weight:800;transition:.2s}
+    .hero-card a span{color:#ff5b69}
+    .hero-card a:hover{border-color:#ed2638;background:rgba(237,38,56,.1)}
+    .hero-feature-row{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:11px;margin-top:54px}
+    .hero-feature{display:flex;align-items:center;gap:13px;padding:15px 16px;border:1px solid rgba(255,255,255,.18);border-radius:19px;background:rgba(10,12,15,.7);backdrop-filter:blur(12px)}
+    .hero-feature-icon{width:39px;height:39px;flex:0 0 39px;border-radius:13px;display:grid;place-items:center;background:rgba(237,38,56,.14);color:#ff5d6b;font-size:19px}
+    .hero-feature b{display:block;font-size:11px;line-height:1.25}.hero-feature small{display:block;color:#aeb3bc;font-size:9px;margin-top:3px}
+
+    /* Booking */
+    .booking-band{position:relative;z-index:3;margin-top:-1px;padding:23px 0 26px;background:linear-gradient(110deg,#17191e,#22252b 52%,#15171b);border:1px solid rgba(255,255,255,.13);border-radius:0 0 28px 28px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+    .booking-grid{display:grid;grid-template-columns:1.05fr 1fr 1fr 1fr .7fr 1fr auto;gap:12px;align-items:end}
+    .booking-intro strong{display:block;font-size:16px}.booking-intro small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+    .field label{display:block;margin:0 0 6px 4px;color:#c6c9cf;font-size:10px;font-weight:850}
+    .field select,.field input{display:block;width:100%;min-width:0;height:47px;padding:0 12px;border:1px solid rgba(255,255,255,.2);border-radius:14px;background:#101216;color:#fff;font-size:12px;outline:none}
+    .field select:focus,.field input:focus{border-color:#ff5362;box-shadow:0 0 0 3px rgba(237,38,56,.14)}
+    .field select option,.field optgroup{background:#15181d;color:white}
+    .booking-grid .btn{height:47px;min-height:47px;padding:0 18px;white-space:nowrap;font-size:11px}
+
+    /* Route section — responsive, flag-led, no absolute city positioning */
+    .routes{background:radial-gradient(ellipse at 85% 34%,rgba(237,38,56,.09),transparent 38%),#0a0c0f;overflow:hidden}
+    .route-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:33px}
+    .route-heading .section-lead{max-width:480px;margin-bottom:4px}
+    .route-board{position:relative;display:grid;grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);gap:24px;padding:30px;border:1px solid rgba(255,255,255,.16);border-radius:32px;overflow:hidden;background:linear-gradient(135deg,rgba(23,26,31,.98),rgba(11,13,17,.98));box-shadow:var(--shadow)}
+    .route-board:before{content:"";position:absolute;inset:0;background:linear-gradient(125deg,transparent 42%,rgba(237,38,56,.06),transparent 70%),url("assets/route-road.webp") center/cover;opacity:.14;pointer-events:none}
+    .route-summary,.route-itinerary{position:relative;z-index:1}
+    .route-summary{display:flex;flex-direction:column;gap:12px}
+    .route-summary-head{padding:5px 2px 8px}.route-summary-head .kicker{font-size:10px}.route-summary-head h3{font-size:clamp(25px,3vw,38px);line-height:1.05;letter-spacing:-.045em;margin:13px 0 9px}.route-summary-head p{margin:0;color:var(--muted);font-size:12px;max-width:360px}
+    .country-card{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:12px;padding:13px 14px;border:1px solid rgba(255,255,255,.11);border-radius:19px;background:rgba(255,255,255,.035);transition:transform .2s,border-color .2s,background .2s}
+    .country-card:hover{transform:translateX(3px);border-color:rgba(237,38,56,.55);background:rgba(237,38,56,.055)}
+    .flag-orb{width:50px;height:50px;display:block;flex:none;border-radius:50%;background:#15181d;box-shadow:0 5px 16px rgba(0,0,0,.32),0 0 0 2px rgba(255,255,255,.16);overflow:hidden;border:1px solid rgba(255,255,255,.55)}
+    .country-card h4{font-size:13px;margin:0 0 2px}.country-card p{font-size:10px;line-height:1.45;color:#aab0b8;margin:0}.country-card .country-code{font-size:9px;font-weight:900;letter-spacing:.13em;color:#727984}
+    .route-mini-note{margin-top:auto;padding:14px 15px;border-radius:17px;background:rgba(237,38,56,.09);border:1px solid rgba(237,38,56,.22);color:#d9dce1;font-size:10px}.route-mini-note b{display:block;color:#fff;font-size:12px;margin-bottom:4px}
+    .route-itinerary{padding:5px 0 5px 24px;border-left:1px solid rgba(255,255,255,.12)}
+    .itinerary-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 15px}.itinerary-heading strong{font-size:14px}.itinerary-heading span{font-size:9px;color:#8e959f;letter-spacing:.13em;text-transform:uppercase}
+    .route-group{position:relative;padding:0 0 18px 25px;margin:0 0 17px;border-bottom:1px solid rgba(255,255,255,.09)}
+    .route-group:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+    .route-group:before{content:"";position:absolute;left:0;top:5px;bottom:-19px;width:1px;background:linear-gradient(var(--red),rgba(237,38,56,.12))}
+    .route-group:last-child:before{bottom:calc(100% - 6px)}
+    .route-group:after{content:"";position:absolute;left:-5px;top:4px;width:9px;height:9px;border:2px solid white;border-radius:50%;background:var(--red);box-shadow:0 0 12px rgba(237,38,56,.8)}
+    .route-group-head{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+    .route-group-head .flag-small{width:29px;height:29px;display:block;flex:none;border-radius:50%;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.55);box-shadow:0 3px 8px #0008}
+    .route-group-head b{font-size:12px}.route-group-head small{margin-left:auto;color:#8d949e;font-size:9px;font-weight:850;letter-spacing:.13em}
+    .route-stops{display:flex;flex-wrap:wrap;gap:7px}
+    .route-stops span{position:relative;padding:6px 10px 6px 17px;border:1px solid rgba(255,255,255,.1);border-radius:999px;background:rgba(255,255,255,.04);color:#dce0e5;font-size:10px;font-weight:700;white-space:nowrap}
+    .route-stops span:before{content:"";position:absolute;left:8px;top:50%;width:4px;height:4px;transform:translateY(-50%);border-radius:50%;background:#ff6571;box-shadow:0 0 8px rgba(237,38,56,.6)}
+
+    /* Schedule */
+    .schedule{background:#111419}
+    .schedule-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:30px}
+    .schedule-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .schedule-card{padding:27px;border:1px solid rgba(255,255,255,.13);border-radius:26px;background:linear-gradient(145deg,#1a1d23,#121419);box-shadow:0 18px 42px rgba(0,0,0,.2)}
+    .schedule-card-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}.schedule-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;background:rgba(237,38,56,.14);color:#ff5b69;font-size:22px}.schedule-card h3{font-size:17px;margin:0}.schedule-card-head p{margin:3px 0 0;color:var(--muted);font-size:11px}
+    .schedule-status{display:flex;align-items:flex-start;gap:12px;padding:17px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09);margin-bottom:18px}.schedule-status b{display:block;font-size:12px}.schedule-status span{display:block;color:var(--muted);font-size:10px;margin-top:4px}.schedule-status .status-dot{width:9px;height:9px;flex:none;margin-top:4px;border-radius:50%;background:#54c995;box-shadow:0 0 10px #54c995}
+
+    /* Services */
+    .services{background:#090b0e}
+    .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:32px}
+    .service-card{position:relative;overflow:hidden;min-height:245px;padding:25px;border:1px solid rgba(255,255,255,.13);border-radius:25px;background:linear-gradient(145deg,#1a1d22,#111318);transition:transform .25s,border-color .25s,box-shadow .25s}
+    .service-card:hover{transform:translateY(-5px);border-color:rgba(237,38,56,.5);box-shadow:0 20px 45px rgba(0,0,0,.3)}
+    .service-card:after{content:"";position:absolute;width:170px;height:170px;right:-85px;top:-90px;border-radius:50%;background:rgba(237,38,56,.12);filter:blur(20px)}
+    .service-no{position:absolute;right:23px;top:22px;color:#68707b;font-size:10px;font-weight:900;letter-spacing:.15em}
+    .service-icon{width:53px;height:53px;display:grid;place-items:center;border-radius:18px;background:rgba(237,38,56,.12);color:#ff5c6b;font-size:24px;margin-bottom:26px}
+    .service-card h3{font-size:17px;margin:0 0 9px}.service-card p{font-size:12px;color:var(--muted);margin:0 0 20px;max-width:330px}.service-card a{position:relative;z-index:1;color:#fff;font-size:11px;font-weight:900}.service-card a span{color:#ff6571;margin-left:8px}
+
+    /* Fleet */
+    .fleet{background:#111419}
+    .fleet-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:54px;align-items:center}
+    .fleet-photo{position:relative;overflow:hidden;height:430px;min-height:430px;border:1px solid rgba(255,255,255,.18);border-radius:31px;box-shadow:var(--shadow)}
+    .fleet-photo>.fleet-main-image{width:100%;height:100%;min-height:430px;object-fit:cover;object-position:center}
+    .fleet-inset{position:absolute;right:18px;bottom:18px;width:38%;height:36%;overflow:hidden;border:2px solid rgba(255,255,255,.8);border-radius:20px;box-shadow:0 12px 35px #0009}
+    .fleet-inset img{width:100%;height:100%;object-fit:cover}
+    .fleet-inset span{position:absolute;left:9px;bottom:9px;padding:6px 9px;border-radius:999px;background:rgba(7,9,12,.78);font-size:9px;font-weight:850}
+    .fleet-photo:after{content:"КОМФОРТ-КЛАС · YKUS TRANSFER";position:absolute;left:20px;bottom:20px;padding:9px 14px;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(7,9,12,.72);backdrop-filter:blur(10px);font-size:9px;font-weight:900;letter-spacing:.14em}
+    .fleet-copy>p{font-size:13px;color:var(--muted);max-width:520px}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+    .feature{display:flex;gap:10px;align-items:center;padding:12px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.035)}
+    .feature-icon{width:33px;height:33px;flex:none;display:grid;place-items:center;border-radius:11px;background:rgba(237,38,56,.12);color:#ff6370;font-size:17px}
+    .feature b{display:block;font-size:11px}.feature small{display:block;font-size:9px;color:#a1a7b0;margin-top:2px}
+
+    /* About + contact */
+    .about{background:#0a0c0f}
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}
+    .about-panel{padding:29px;border:1px solid rgba(255,255,255,.13);border-radius:27px;background:linear-gradient(145deg,#1a1d22,#101216)}
+    .about-logo{width:190px;height:100px;object-fit:contain;object-position:left center;margin-bottom:12px}
+    .about-panel p{margin:0;color:var(--muted);font-size:12px}
+    .about-countries{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+    .about-countries span{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.12);font-size:10px;font-weight:800}.about-countries .flag-mini{width:19px;height:19px}
+    .contact{background:#090b0e;padding:80px 0 94px}
+    .contact-panel{position:relative;overflow:hidden;padding:45px;border:1px solid rgba(255,255,255,.16);border-radius:32px;background:linear-gradient(110deg,#2c1117,#17191e 58%,#121419);box-shadow:var(--shadow)}
+    .contact-panel:before{content:"";position:absolute;right:-100px;top:-250px;width:430px;height:430px;border-radius:50%;background:rgba(237,38,56,.2);filter:blur(65px)}
+    .contact-inner{position:relative;display:flex;align-items:center;justify-content:space-between;gap:30px}
+    .contact-copy{max-width:540px}.contact-copy p{color:#c2c6cd;font-size:13px}
+    .contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;min-width:min(420px,45%)}
+    .contact-link{min-height:48px;padding:11px 13px;display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(255,255,255,.23);border-radius:999px;background:rgba(9,11,14,.45);font-size:11px;font-weight:900;white-space:nowrap;transition:.2s}
+    .contact-link:hover{border-color:var(--red);transform:translateY(-2px)}.contact-link.primary{background:linear-gradient(135deg,#ff3d4e,#b30d1c);border-color:#ff6571}
+    .footer{padding:29px 0;border-top:1px solid rgba(255,255,255,.1);background:#07080a}
+    .footer-inner{display:flex;align-items:center;justify-content:space-between;gap:22px;color:#9097a1;font-size:10px}
+    .footer-brand{display:flex;align-items:center;gap:12px}.footer-brand img{width:105px;height:52px;object-fit:contain}.footer-nav{display:flex;flex-wrap:wrap;gap:17px}.footer-nav a:hover{color:#fff}
+    .to-top{position:fixed;z-index:40;right:22px;bottom:22px;width:45px;height:45px;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:rgba(16,18,22,.88);backdrop-filter:blur(10px);display:grid;place-items:center;color:#fff;font-size:19px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s}
+    .to-top.visible{opacity:1;visibility:visible;transform:none}
+    .mobile-booking{display:none}
+
+    /* Responsive system */
+    @media(max-width:1180px){
+      :root{--header-h:78px}.brand{width:145px}.nav{gap:11px}.nav a{font-size:10px;letter-spacing:-.015em}.header-actions .social{width:34px;height:34px}.header-phone{font-size:10px;padding:9px 11px}
+      .hero-content{grid-template-columns:minmax(0,1fr) 310px;gap:28px}.booking-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.booking-intro{grid-column:span 3}.booking-grid .btn{grid-column:span 3;width:100%}
+    }
+    @media(max-width:930px){
+      :root{--header-h:74px}.header-inner{gap:13px}.brand{width:140px}.menu-btn{display:flex;order:3}.header-actions{margin-left:auto}.header-actions .social{display:none}.header-phone{font-size:11px}
+      .nav{display:none;position:absolute;top:calc(var(--header-h) + 9px);left:18px;right:18px;padding:13px;border:1px solid rgba(255,255,255,.15);border-radius:22px;background:rgba(8,10,13,.97);backdrop-filter:blur(20px);box-shadow:var(--shadow);flex-direction:column;align-items:stretch;gap:0}
+      .nav.is-open{display:flex}.nav a{padding:13px 12px;font-size:13px;border-radius:12px}.nav a:hover{background:rgba(237,38,56,.1)}.nav a.active:after{display:none}
+      .hero{min-height:0;padding:calc(var(--header-h) + 70px) 0 38px}.hero-content{grid-template-columns:1fr;gap:27px}.hero-copy{max-width:760px}.hero-card{justify-self:start;max-width:530px}.hero-feature-row{grid-template-columns:repeat(2,1fr);margin-top:28px}
+      .route-board{grid-template-columns:1fr;gap:22px}.route-summary{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}.route-summary-head{grid-column:1/-1}.route-mini-note{grid-column:1/-1}.route-itinerary{border-left:0;border-top:1px solid rgba(255,255,255,.12);padding:22px 0 0}
+      .fleet-grid{gap:30px}.contact-inner{display:block}.contact-actions{min-width:0;max-width:500px;margin-top:20px}
+    }
+    @media(max-width:640px){
+      :root{--header-h:68px}.wrap{width:calc(100% - 32px)}.section{padding:72px 0}.section-title{font-size:clamp(32px,9vw,46px)}
+      .header-inner{gap:9px}.brand{width:118px}.brand img{height:57px}.header-phone{padding:9px 10px;font-size:10px}.header-phone b{display:none}.menu-btn{width:40px;height:40px;border-radius:13px}
+      .hero{padding:calc(var(--header-h) + 52px) 0 28px}.hero:before{background-image:linear-gradient(90deg,rgba(5,7,10,.84),rgba(5,7,10,.52)),linear-gradient(0deg,#090a0d 0%,transparent 35%),url("assets/hero-carpathians.webp");background-position:61% center}
+      .eyebrow{font-size:9px;letter-spacing:.17em}.hero h1{font-size:clamp(43px,12.7vw,67px);margin:18px 0 15px}.hero-lead{font-size:15px;margin-bottom:19px}.hero-tags{gap:7px;margin-bottom:22px}.hero-tag{font-size:9px;padding:8px 10px}.hero-buttons{display:grid;grid-template-columns:1fr}.hero-buttons .btn{width:100%}.hero-countries{gap:6px}.hero-country{font-size:10px;padding:6px 9px}.hero-card{max-width:none;padding:18px;border-radius:23px}.hero-card h2{font-size:16px}.hero-card p{font-size:11px}.hero-card a{font-size:11px;padding:11px 12px}
+      .hero-feature-row{gap:7px;margin-top:22px}.hero-feature{padding:11px 10px;gap:8px;border-radius:15px}.hero-feature-icon{width:31px;height:31px;flex-basis:31px;border-radius:10px;font-size:15px}.hero-feature b{font-size:9px}.hero-feature small{font-size:8px}
+      .booking-band{padding:18px 0 20px;border-radius:0 0 22px 22px}.booking-grid{grid-template-columns:1fr 1fr;gap:10px}.booking-intro{grid-column:1/-1;margin-bottom:2px}.booking-intro strong{font-size:15px}.field label{font-size:9px}.field select,.field input{height:45px;font-size:11px;padding:0 9px;border-radius:12px}.booking-grid .btn{grid-column:1/-1;width:100%;height:47px}
+      .route-heading,.schedule-head{display:block}.route-heading .section-lead{margin-top:12px;font-size:13px}.route-board{padding:17px;border-radius:24px;gap:18px}.route-summary{grid-template-columns:1fr 1fr;gap:8px}.route-summary-head{grid-column:1/-1;padding:3px 0 6px}.route-summary-head h3{font-size:27px}.route-summary-head p{font-size:11px}.country-card{grid-template-columns:42px 1fr;gap:8px;padding:10px;border-radius:15px;min-width:0}.flag-orb{width:39px;height:39px}.country-card h4{font-size:10px}.country-card p{font-size:8px;line-height:1.35}.country-card .country-code{display:none}.route-mini-note{font-size:9px;padding:12px}.route-itinerary{padding-top:17px}.itinerary-heading{margin-bottom:12px}.itinerary-heading strong{font-size:13px}.itinerary-heading span{font-size:8px}.route-group{padding-left:19px;padding-bottom:14px;margin-bottom:13px}.route-group-head .flag-small{width:24px;height:24px}.route-group-head b{font-size:11px}.route-stops{gap:6px}.route-stops span{font-size:9px;padding:6px 8px 6px 15px}.route-stops span:before{left:6px;width:4px;height:4px}
+      .schedule-grid,.service-grid{grid-template-columns:1fr}.schedule-card{padding:21px}.schedule-card h3{font-size:15px}.schedule-status{padding:14px}.schedule-card .btn{width:100%;font-size:11px}
+      .service-grid{gap:11px;margin-top:23px}.service-card{min-height:0;padding:21px;border-radius:21px}.service-icon{margin-bottom:17px;width:46px;height:46px}.service-card h3{font-size:15px}.service-card p{font-size:11px;margin-bottom:13px}
+      .fleet-grid{grid-template-columns:1fr;gap:23px}.fleet-photo{height:250px;min-height:250px;order:2;border-radius:23px}.fleet-photo>.fleet-main-image{min-height:250px}.fleet-inset{right:10px;bottom:10px;width:42%;height:35%;border-radius:14px}.fleet-copy{order:1}.feature-grid{gap:7px}.feature{padding:9px;gap:7px}.feature b{font-size:10px}.feature small{font-size:8px}
+      .about-grid{grid-template-columns:1fr;gap:20px}.about-panel{padding:22px}.about-logo{width:155px;height:80px}.contact{padding:65px 0 90px}.contact-panel{padding:25px 20px;border-radius:24px}.contact-panel .section-title{font-size:34px}.contact-copy p{font-size:11px}.contact-actions{grid-template-columns:1fr;gap:8px}.contact-link{min-height:45px;font-size:11px}
+      .footer-inner{display:grid;grid-template-columns:1fr;gap:12px}.footer-brand img{width:88px;height:45px}.footer-nav{gap:12px}.footer-nav a{font-size:10px}
+      .to-top{right:13px;bottom:78px;width:39px;height:39px}.mobile-booking{display:flex;position:fixed;z-index:80;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));min-height:48px;align-items:center;justify-content:center;border-radius:999px;background:linear-gradient(135deg,#ff3d4e,#b50d1f);box-shadow:0 10px 35px rgba(0,0,0,.45);font-size:12px;font-weight:900;opacity:0;visibility:hidden;transform:translateY(10px);transition:.2s}.mobile-booking.visible{opacity:1;visibility:visible;transform:none}
+    }
+    @media(max-width:380px){.wrap{width:calc(100% - 26px)}.header-phone{display:none}.hero h1{font-size:42px}.hero-feature{padding:9px 7px}.route-summary{grid-template-columns:1fr}.country-card{grid-template-columns:43px 1fr}.booking-grid{grid-template-columns:1fr}.booking-grid .btn,.booking-intro{grid-column:auto}.feature-grid{grid-template-columns:1fr}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.preloader{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="preloader" id="preloader" role="status" aria-label="Завантаження сайту">
+    <div class="loader-content">
+      <img class="loader-logo" src="assets/ykus-logo.webp" alt="YKUS TRANSFER">
+      <div class="loader-line" aria-hidden="true"><span></span></div>
+      <div class="loader-caption">Завантаження сайту</div>
+    </div>
+  </div>
+
+  <header class="header" id="header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="YKUS TRANSFER — на головну"><img src="assets/ykus-logo.webp" alt="YKUS TRANSFER"></a>
+      <nav class="nav" id="nav" aria-label="Головна навігація">
+        <a class="active" href="#top">Головна</a><a href="#routes">Пасажирські перевезення</a><a href="#schedule">Розклад рейсів</a><a href="#services">Послуги</a><a href="#fleet">Автопарк</a><a href="#about">Про нас</a><a href="#contacts">Контакти</a>
+      </nav>
+      <div class="header-actions">
+        <a class="social" href="https://www.instagram.com/ykus_transfer/" target="_blank" rel="noopener noreferrer" aria-label="Instagram YKUS TRANSFER"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+        <a class="social" href="https://wa.me/380977001889" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.8 23l5.4-1.2A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9 9 0 0 1-4.6-1.3l-.3-.2-3.2.7.7-3.1-.2-.3A9 9 0 1 1 12 21Zm5-6.7c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.5.1-.6l.5-.6c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1c-.2-.5-.5-.4-.7-.4H7.8c-.2 0-.5.1-.8.4s-1 1-1 2.3 1 2.7 1.1 2.9c.1.2 2 3.1 4.9 4.3 1.8.8 2.5.8 3.4.7.5-.1 1.7-.7 1.9-1.3.2-.6.2-1.1.1-1.3-.1-.2-.3-.2-.6-.4Z"/></svg></a>
+        <a class="header-phone" href="tel:+380977001889"><b>☎</b> +380 977 001 889</a>
+      </div>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="Відкрити меню" aria-expanded="false" aria-controls="nav">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="wrap">
+        <div class="hero-content">
+          <div class="hero-copy">
+            <div class="eyebrow"><i></i> Міжнародні пасажирські перевезення</div>
+            <h1 id="heroTitle">Із Закарпаття <span>до Європи</span></h1>
+            <p class="hero-lead">Комфортні поїздки до Польщі, Чехії та Словаччини. Зручне сполучення між рідним краєм і містами Європи.</p>
+            <div class="hero-tags"><span class="hero-tag"><i>✦</i> Mercedes-Benz Sprinter</span><span class="hero-tag"><i>⌁</i> Wi-Fi у дорозі</span><span class="hero-tag"><i>❄</i> Клімат-контроль</span></div>
+            <div class="hero-buttons"><a class="btn btn-primary" href="#booking">Забронювати поїздку <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a><a class="btn btn-ghost" href="#routes">Пасажирські перевезення</a></div>
+            <div class="hero-countries"><span class="hero-country"><span class="flag-mini" title="Україна"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор України"><rect width="60" height="30" fill="#0057b8"/><rect y="30" width="60" height="30" fill="#ffd700"/></svg></span> Україна</span><span class="hero-country"><span class="flag-mini" title="Словаччина"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Словаччини"><rect width="60" height="20" fill="#fff"/><rect y="20" width="60" height="20" fill="#0b4ea2"/><rect y="40" width="60" height="20" fill="#ee1c25"/><path d="M12 17 L23 20 L23 34 Q22 41 12 46 Q2 41 1 34 L1 20 Z" fill="#fff" stroke="#d5d9e0" stroke-width="1"/><path d="M12 20 L20 22 L20 34 Q19 39 12 43 Q5 39 4 34 L4 22 Z" fill="#e51b35"/><path d="M11 25 H13 V30 H17 V33 H13 V38 H10 V33 H6 V30 H10 V25 Z" fill="#fff"/></svg></span> Словаччина</span><span class="hero-country"><span class="flag-mini" title="Чехія"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Чехії"><rect width="60" height="30" fill="#fff"/><rect y="30" width="60" height="30" fill="#d7141a"/><path d="M0 0 L34 30 L0 60 Z" fill="#11457e"/></svg></span> Чехія</span><span class="hero-country"><span class="flag-mini" title="Польща"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Польщі"><rect width="60" height="30" fill="#fff"/><rect y="30" width="60" height="30" fill="#dc143c"/></svg></span> Польща</span></div>
+          </div>
+          <aside class="hero-card" aria-label="Швидкі посилання">
+            <div class="hero-card-head"><span class="hero-card-icon">▦</span><h2>Плануєте поїздку?</h2></div>
+            <p>Оберіть напрямок і залиште заявку — ми зв’яжемося з вами, щоб підтвердити деталі.</p>
+            <a href="#booking">Поїздка із Закарпаття <span>↗</span></a><a href="#booking">Повернення з Європи <span>↗</span></a><a href="#schedule">Перевірити розклад <span>↗</span></a>
+          </aside>
+        </div>
+        <div class="hero-feature-row">
+          <div class="hero-feature"><span class="hero-feature-icon">▣</span><span><b>Mercedes-Benz Sprinter</b><small>Мікроавтобуси для поїздок</small></span></div>
+          <div class="hero-feature"><span class="hero-feature-icon">♧</span><span><b>Комфортні місця</b><small>Зручність у дорозі</small></span></div>
+          <div class="hero-feature"><span class="hero-feature-icon">⌁</span><span><b>Wi-Fi та клімат</b><small>Зв’язок і комфорт</small></span></div>
+          <div class="hero-feature"><span class="hero-feature-icon">⬡</span><span><b>Турбота про пасажира</b><small>Безпека та надійність</small></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="booking-band" id="booking" aria-label="Форма бронювання">
+      <div class="wrap">
+        <form class="booking-grid" id="bookingForm">
+          <div class="booking-intro"><strong>Забронювати поїздку</strong><small>Залиште заявку — зв’яжемося з вами</small></div>
+          <div class="field"><label for="from">Звідки їдете?</label><select id="from" name="from" required><option value="" selected disabled>Оберіть місто</option><optgroup label="Закарпаття"><option>Ужгород</option><option>Мукачево</option><option>Берегове</option><option>Свалява</option><option>Хуст</option><option>Тячів</option><option>Виноградів</option><option>Іршава</option></optgroup><optgroup label="Словаччина"><option>Кошице</option><option>Пряшів</option><option>Попрад</option><option>Жиліна</option></optgroup><optgroup label="Чехія"><option>Злін</option><option>Фрідек-Містек</option><option>Острава</option><option>Опава</option></optgroup><optgroup label="Польща"><option>Закопане</option><option>Краків</option><option>Катовіце</option><option>Ополе</option><option>Вроцлав</option></optgroup></select></div>
+          <div class="field"><label for="to">Куди прямуєте?</label><select id="to" name="to" required><option value="" selected disabled>Оберіть місто</option><optgroup label="Польща"><option>Вроцлав</option><option>Ополе</option><option>Катовіце</option><option>Краків</option><option>Закопане</option></optgroup><optgroup label="Чехія"><option>Опава</option><option>Острава</option><option>Фрідек-Містек</option><option>Злін</option></optgroup><optgroup label="Словаччина"><option>Жиліна</option><option>Попрад</option><option>Пряшів</option><option>Кошице</option></optgroup><optgroup label="Закарпаття"><option>Ужгород</option><option>Мукачево</option><option>Берегове</option><option>Свалява</option><option>Хуст</option><option>Тячів</option><option>Виноградів</option><option>Іршава</option></optgroup></select></div>
+          <div class="field"><label for="date">Дата поїздки</label><input id="date" name="date" type="date" required></div>
+          <div class="field"><label for="passengers">Пасажирів</label><select id="passengers" name="passengers"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+          <div class="field"><label for="phone">Ваш телефон</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+380 …" required pattern="[+0-9()\-\s]{7,20}" title="Введіть номер телефону"></div>
+          <button class="btn btn-primary" type="submit">Надіслати заявку <span>→</span></button>
+        </form>
+      </div>
+    </section>
+
+    <section class="section routes" id="routes">
+      <div class="wrap">
+        <div class="route-heading"><div><div class="kicker">ГЕОГРАФІЯ ПОЇЗДОК</div><h2 class="section-title">Маршрут, що <em>об’єднує</em></h2></div><p class="section-lead">З’єднуємо Закарпаття з містами Польщі, Чехії та Словаччини. На схемі показані основні міста, через які проходять напрямки перевізника.</p></div>
+        <div class="route-board">
+          <div class="route-summary">
+            <div class="route-summary-head"><div class="kicker">МІЖНАРОДНИЙ МАРШРУТ</div><h3>Закарпаття <em style="color:var(--red)">↔</em> Європа</h3><p>Чотири країни, десятки міст і зручне сполучення у дві сторони.</p></div>
+            <article class="country-card"><span class="flag-orb" title="Польща"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Польщі"><rect width="60" height="30" fill="#fff"/><rect y="30" width="60" height="30" fill="#dc143c"/></svg></span><div><h4>Польща</h4><p>Закопане, Краків, Катовіце, Ополе, Вроцлав</p></div><span class="country-code">PL</span></article>
+            <article class="country-card"><span class="flag-orb" title="Чехія"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Чехії"><rect width="60" height="30" fill="#fff"/><rect y="30" width="60" height="30" fill="#d7141a"/><path d="M0 0 L34 30 L0 60 Z" fill="#11457e"/></svg></span><div><h4>Чехія</h4><p>Злін, Фрідек-Містек, Острава, Опава</p></div><span class="country-code">CZ</span></article>
+            <article class="country-card"><span class="flag-orb" title="Словаччина"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Словаччини"><rect width="60" height="20" fill="#fff"/><rect y="20" width="60" height="20" fill="#0b4ea2"/><rect y="40" width="60" height="20" fill="#ee1c25"/><path d="M12 17 L23 20 L23 34 Q22 41 12 46 Q2 41 1 34 L1 20 Z" fill="#fff" stroke="#d5d9e0" stroke-width="1"/><path d="M12 20 L20 22 L20 34 Q19 39 12 43 Q5 39 4 34 L4 22 Z" fill="#e51b35"/><path d="M11 25 H13 V30 H17 V33 H13 V38 H10 V33 H6 V30 H10 V25 Z" fill="#fff"/></svg></span><div><h4>Словаччина</h4><p>Кошице, Пряшів, Попрад, Жиліна</p></div><span class="country-code">SK</span></article>
+            <article class="country-card"><span class="flag-orb" title="Україна"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор України"><rect width="60" height="30" fill="#0057b8"/><rect y="30" width="60" height="30" fill="#ffd700"/></svg></span><div><h4>Україна · Закарпаття</h4><p>Тячів, Хуст, Виноградів, Іршава, Мукачево, Берегове, Свалява, Ужгород</p></div><span class="country-code">UA</span></article>
+            <div class="route-mini-note"><b>Закарпаття ↔ Європа</b>Перелік міст наведений за інформацією перевізника. Конкретні зупинки та можливість посадки уточнюйте під час бронювання.</div>
+          </div>
+          <div class="route-itinerary">
+            <div class="itinerary-heading"><strong>Міста вздовж маршруту</strong><span>Схема напрямків</span></div>
+            <div class="route-group"><div class="route-group-head"><span class="flag-small" title="Польща"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Польщі"><rect width="60" height="30" fill="#fff"/><rect y="30" width="60" height="30" fill="#dc143c"/></svg></span><b>Польща</b><small>PL · 5 МІСТ</small></div><div class="route-stops"><span>Вроцлав</span><span>Ополе</span><span>Катовіце</span><span>Краків</span><span>Закопане</span></div></div>
+            <div class="route-group"><div class="route-group-head"><span class="flag-small" title="Чехія"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Чехії"><rect width="60" height="30" fill="#fff"/><rect y="30" width="60" height="30" fill="#d7141a"/><path d="M0 0 L34 30 L0 60 Z" fill="#11457e"/></svg></span><b>Чехія</b><small>CZ · 4 МІСТА</small></div><div class="route-stops"><span>Опава</span><span>Острава</span><span>Фрідек-Містек</span><span>Злін</span></div></div>
+            <div class="route-group"><div class="route-group-head"><span class="flag-small" title="Словаччина"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Словаччини"><rect width="60" height="20" fill="#fff"/><rect y="20" width="60" height="20" fill="#0b4ea2"/><rect y="40" width="60" height="20" fill="#ee1c25"/><path d="M12 17 L23 20 L23 34 Q22 41 12 46 Q2 41 1 34 L1 20 Z" fill="#fff" stroke="#d5d9e0" stroke-width="1"/><path d="M12 20 L20 22 L20 34 Q19 39 12 43 Q5 39 4 34 L4 22 Z" fill="#e51b35"/><path d="M11 25 H13 V30 H17 V33 H13 V38 H10 V33 H6 V30 H10 V25 Z" fill="#fff"/></svg></span><b>Словаччина</b><small>SK · 4 МІСТА</small></div><div class="route-stops"><span>Жиліна</span><span>Попрад</span><span>Пряшів</span><span>Кошице</span></div></div>
+            <div class="route-group"><div class="route-group-head"><span class="flag-small" title="Україна"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор України"><rect width="60" height="30" fill="#0057b8"/><rect y="30" width="60" height="30" fill="#ffd700"/></svg></span><b>Україна · Закарпаття</b><small>UA · 8 МІСТ</small></div><div class="route-stops"><span>Тячів</span><span>Хуст</span><span>Виноградів</span><span>Іршава</span><span>Мукачево</span><span>Берегове</span><span>Свалява</span><span>Ужгород</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section schedule" id="schedule">
+      <div class="wrap">
+        <div class="schedule-head"><div><div class="kicker">ПЛАНУЙТЕ ЗАЗДАЛЕГІДЬ</div><h2 class="section-title">Розклад <em>рейсів</em></h2></div><p class="section-lead">Дати рейсів змінюються. Напишіть нам, щоб отримати актуальний графік і перевірити наявність місць.</p></div>
+        <div class="schedule-grid">
+          <article class="schedule-card"><div class="schedule-card-head"><span class="schedule-icon">↗</span><div><h3>Виїзд із Закарпаття</h3><p>До Польщі та Чехії</p></div></div><div class="schedule-status"><span class="status-dot"></span><div><b>Регулярні міжнародні рейси</b><span>Дату наступного виїзду уточнюйте у перевізника — графік може оновлюватися.</span></div></div><a class="btn btn-primary" href="#booking">Запитати про найближчий рейс →</a></article>
+          <article class="schedule-card"><div class="schedule-card-head"><span class="schedule-icon">↙</span><div><h3>Виїзд із Європи</h3><p>До Закарпаття</p></div></div><div class="schedule-status"><span class="status-dot"></span><div><b>Зворотні рейси</b><span>Повідомте місто відправлення та бажану дату — уточнимо доступний варіант.</span></div></div><a class="btn btn-ghost" href="#booking">Запитати про зворотний рейс →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="services">
+      <div class="wrap"><div class="kicker">ЩО МИ ПРОПОНУЄМО</div><h2 class="section-title">Послуги для <em>ваших поїздок</em></h2><p class="section-lead">Допомагаємо організувати поїздку, трансфер до аеропорту або доставку невеликої передачі між країнами.</p>
+        <div class="service-grid">
+          <article class="service-card"><span class="service-no">01 / PASSENGER</span><span class="service-icon">▣</span><h3>Пасажирські перевезення</h3><p>Поїздки із Закарпаття до Польщі, Чехії та Словаччини, а також у зворотному напрямку.</p><a href="#booking">Обрати напрямок <span>→</span></a></article>
+          <article class="service-card"><span class="service-no">02 / AIRPORT</span><span class="service-icon">✈</span><h3>Трансфер до аеропортів</h3><p>Поїздки до Кошице, Кракова, Катовіце, Острави та Вроцлава.</p><a href="#booking">Замовити трансфер <span>→</span></a></article>
+          <article class="service-card"><span class="service-no">03 / DELIVERY</span><span class="service-icon">▧</span><h3>Доставка посилок</h3><p>Перевезення посилок, передач і малогабаритних вантажів між Україною та Європою.</p><a href="#contacts">Уточнити доставку <span>→</span></a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section fleet" id="fleet">
+      <div class="wrap fleet-grid">
+        <div class="fleet-photo"><img class="fleet-main-image" src="assets/sprinter-road.webp" alt="Білий пасажирський мікроавтобус на гірській дорозі під час заходу сонця" loading="lazy" decoding="async"><div class="fleet-inset"><img src="assets/fleet-interior.webp" alt="Деталі комфортного салону мікроавтобуса" loading="lazy" decoding="async"><span>Комфортний салон</span></div></div>
+        <div class="fleet-copy"><div class="kicker">КОМФОРТ У ДОРОЗІ</div><h2 class="section-title">Подорожуйте <em>з комфортом</em></h2><p>У поїздках використовуються мікроавтобуси Mercedes-Benz Sprinter. У рекламних матеріалах перевізника зазначені зручні пасажирські місця, клімат-контроль, Wi-Fi та можливість заряджати гаджети.</p><div class="feature-grid">
+          <div class="feature"><span class="feature-icon">♧</span><div><b>Зручні місця</b><small>Комфортні умови в дорозі</small></div></div>
+          <div class="feature"><span class="feature-icon">❄</span><div><b>Клімат-контроль</b><small>Комфортна температура</small></div></div>
+          <div class="feature"><span class="feature-icon">⌁</span><div><b>Wi-Fi</b><small>Інтернет у дорозі</small></div></div>
+          <div class="feature"><span class="feature-icon">ϟ</span><div><b>Зарядка гаджетів</b><small>Залишайтесь на зв’язку</small></div></div>
+        </div></div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="wrap about-grid">
+        <div><div class="kicker">YKUS TRANSFER</div><h2 class="section-title">Дорога, що <em>з’єднує</em></h2><p class="section-lead">YKUS TRANSFER організовує пасажирські перевезення із Закарпаття до міст Польщі, Чехії та Словаччини. Також доступні трансфери до аеропортів і доставка посилок.</p></div>
+        <div class="about-panel"><img class="about-logo" src="assets/ykus-logo.webp" alt="Логотип YKUS TRANSFER" loading="lazy"><p>Із Закарпаття до Європи — комфортно та зручно. Зв’яжіться з нами, щоб узгодити маршрут, дату та деталі поїздки.</p><div class="about-countries"><span><span class="flag-mini" title="Україна"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор України"><rect width="60" height="30" fill="#0057b8"/><rect y="30" width="60" height="30" fill="#ffd700"/></svg></span> Україна</span><span><span class="flag-mini" title="Словаччина"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Словаччини"><rect width="60" height="20" fill="#fff"/><rect y="20" width="60" height="20" fill="#0b4ea2"/><rect y="40" width="60" height="20" fill="#ee1c25"/><path d="M12 17 L23 20 L23 34 Q22 41 12 46 Q2 41 1 34 L1 20 Z" fill="#fff" stroke="#d5d9e0" stroke-width="1"/><path d="M12 20 L20 22 L20 34 Q19 39 12 43 Q5 39 4 34 L4 22 Z" fill="#e51b35"/><path d="M11 25 H13 V30 H17 V33 H13 V38 H10 V33 H6 V30 H10 V25 Z" fill="#fff"/></svg></span> Словаччина</span><span><span class="flag-mini" title="Чехія"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Чехії"><rect width="60" height="30" fill="#fff"/><rect y="30" width="60" height="30" fill="#d7141a"/><path d="M0 0 L34 30 L0 60 Z" fill="#11457e"/></svg></span> Чехія</span><span><span class="flag-mini" title="Польща"><svg class="flag-svg" viewBox="0 0 60 60" role="img" aria-label="Прапор Польщі"><rect width="60" height="30" fill="#fff"/><rect y="30" width="60" height="30" fill="#dc143c"/></svg></span> Польща</span></div></div>
+      </div>
+    </section>
+
+    <section class="contact" id="contacts"><div class="wrap"><div class="contact-panel"><div class="contact-inner"><div class="contact-copy"><div class="kicker">МИ НА ЗВ’ЯЗКУ</div><h2 class="section-title">Час у дорогу? <em>Бронюйте!</em></h2><p>Зателефонуйте або напишіть, щоб уточнити дати рейсів, вільні місця, маршрут чи умови доставки посилок.</p></div><div class="contact-actions"><a class="contact-link primary" href="tel:+380977001889">☎ +380 977 001 889</a><a class="contact-link" href="tel:+48519083936">☎ +48 519 083 936</a><a class="contact-link" href="https://wa.me/380977001889" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a class="contact-link" href="https://www.instagram.com/ykus_transfer/" target="_blank" rel="noopener noreferrer">Instagram ↗</a></div></div></div></div></section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-inner"><div class="footer-brand"><img src="assets/ykus-logo.webp" alt="YKUS TRANSFER" loading="lazy"><span>© <span id="year"></span> YKUS TRANSFER.<br>Усі права захищені.</span></div><nav class="footer-nav" aria-label="Навігація внизу"><a href="#routes">Маршрути</a><a href="#schedule">Розклад</a><a href="#services">Послуги</a><a href="#contacts">Контакти</a></nav><a href="#top">На початок ↑</a></div></footer>
+
+  <a class="mobile-booking" id="mobileBooking" href="#booking">Забронювати поїздку&nbsp; →</a>
+  <a class="to-top" id="toTop" href="#top" aria-label="Повернутися нагору">↑</a>
+
+  <script>
+    (function(){
+      'use strict';
+      var preloader=document.getElementById('preloader');
+      var hideLoader=function(){if(preloader){preloader.classList.add('is-hidden');window.setTimeout(function(){preloader.remove();},650);}};
+      var loaderTimer=window.setTimeout(hideLoader,1800);
+      window.addEventListener('load',function(){window.clearTimeout(loaderTimer);window.setTimeout(hideLoader,420);},{once:true});
+
+      var nav=document.getElementById('nav');
+      var menuBtn=document.getElementById('menuBtn');
+      function closeMenu(){if(!nav||!menuBtn)return;nav.classList.remove('is-open');menuBtn.setAttribute('aria-expanded','false');menuBtn.setAttribute('aria-label','Відкрити меню');menuBtn.textContent='☰';document.body.classList.remove('menu-open');}
+      if(nav&&menuBtn){
+        menuBtn.addEventListener('click',function(){var open=nav.classList.toggle('is-open');menuBtn.setAttribute('aria-expanded',String(open));menuBtn.setAttribute('aria-label',open?'Закрити меню':'Відкрити меню');menuBtn.textContent=open?'×':'☰';document.body.classList.toggle('menu-open',open);});
+        nav.querySelectorAll('a').forEach(function(link){link.addEventListener('click',closeMenu);});
+        document.addEventListener('keydown',function(event){if(event.key==='Escape')closeMenu();});
+        document.addEventListener('click',function(event){if(nav.classList.contains('is-open')&&!nav.contains(event.target)&&!menuBtn.contains(event.target))closeMenu();});
+      }
+
+      var header=document.getElementById('header');
+      var toTop=document.getElementById('toTop');
+      var mobileBooking=document.getElementById('mobileBooking');
+      function onScroll(){var y=window.scrollY||0;if(header)header.classList.toggle('scrolled',y>24);if(toTop)toTop.classList.toggle('visible',y>550);if(mobileBooking)mobileBooking.classList.toggle('visible',y>420);}
+      window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+      var dateInput=document.getElementById('date');
+      if(dateInput){var now=new Date();var localDate=[now.getFullYear(),String(now.getMonth()+1).padStart(2,'0'),String(now.getDate()).padStart(2,'0')].join('-');dateInput.min=localDate;}
+      var year=document.getElementById('year');if(year)year.textContent=new Date().getFullYear();
+
+      var bookingForm=document.getElementById('bookingForm');
+      if(bookingForm){bookingForm.addEventListener('submit',function(event){
+        event.preventDefault();
+        if(!bookingForm.reportValidity())return;
+        var data=new FormData(bookingForm);
+        var chosenDate=data.get('date');
+        var dateLabel=chosenDate?new Intl.DateTimeFormat('uk-UA',{day:'2-digit',month:'long',year:'numeric'}).format(new Date(chosenDate+'T12:00:00')):'не вказано';
+        var from=data.get('from');var to=data.get('to');
+        if(from===to){alert('Оберіть різні міста відправлення та прибуття.');return;}
+        var message=['Вітаю! Хочу забронювати поїздку через сайт YKUS TRANSFER.','Звідки: '+from,'Куди: '+to,'Дата: '+dateLabel,'Кількість пасажирів: '+data.get('passengers'),'Мій телефон: '+data.get('phone')].join('\n');
+        var url='https://wa.me/380977001889?text='+encodeURIComponent(message);
+        var newWindow=window.open(url,'_blank');
+        if(newWindow){newWindow.opener=null;}else{window.location.href=url;}
+      });}
+
+      // Content stays visible without relying on scroll-triggered reveal scripts.
+
+      // Update the active navigation item as sections enter the viewport.
+      if('IntersectionObserver' in window&&nav){
+        var observedSections=Array.from(document.querySelectorAll('main section[id]'));
+        var navObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){var id=entry.target.id;nav.querySelectorAll('a').forEach(function(link){link.classList.toggle('active',link.getAttribute('href')==='#'+id);});}});},{rootMargin:'-35% 0px -55% 0px'});
+        observedSections.forEach(function(section){navObserver.observe(section);});
+      }
+    })();
+  </script>
+<noscript><style>.preloader{display:none!important}</style></noscript>
+</body>
+</html>
