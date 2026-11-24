@@ -1,38 +1,34 @@
-YKUS TRANSFER — FINAL STATIC WEBSITE
+YKUS TRANSFER — STATIC WEBSITE
 
-LOCAL START:
-1. Extract the entire YKUS-TRANSFER folder from the ZIP.
-2. Keep index.html and the assets folder together.
-3. Double-click index.html. It opens directly in Edge, Chrome or another browser.
-4. No Node.js, npm, Vite or local server is needed.
+VERCEL DEPLOYMENT
+1. Import https://github.com/Mikhd5/YKUS-TRANSFER into Vercel.
+2. Framework Preset: Other.
+3. Root Directory: ./
+4. Build Command: leave empty.
+5. Output Directory: leave empty (or set to . if the dashboard requires a value).
+6. Install Command: leave empty.
+7. Deploy.
 
-VERCEL:
-1. Upload the complete YKUS-TRANSFER folder to a GitHub repository.
-2. In Vercel choose Framework Preset: Other.
-3. Leave Build Command empty.
-4. Set Output Directory to . (or leave the default if Vercel detects the static root).
-5. Deploy.
+The repository is a plain static HTML site. No Node.js, npm, Vite, build step, or server is required.
 
-FILES:
-- index.html — complete page, styling and JavaScript in one static file.
-- assets/ykus-logo.webp — supplied YKUS TRANSFER logo, used in header, footer and loading screen.
-- assets/hero-carpathians.webp — high-resolution hero background.
-- assets/sprinter-road.webp — vehicle image for fleet section.
-- assets/fleet-interior.webp — vehicle interior image.
-- assets/route-road.webp — subdued route-section background.
+LOCAL PREVIEW
+Double-click index.html. Keep index.html and all .webp files in the same folder.
 
-FUNCTIONALITY:
-- Responsive desktop, tablet and mobile layout.
-- Mobile navigation with open/close and Escape handling.
-- Route section with circular country flags and grouped city stops.
-- Loading screen with the supplied logo.
-- Booking form validates route, date, passenger count and phone, then prepares a WhatsApp message to +380 977 001 889.
-- Contact numbers: +380 977 001 889 and +48 519 083 936.
+REPOSITORY FILES
+- index.html
+- hero-carpathians.webp
+- route-road.webp
+- sprinter-road.webp
+- fleet-interior.webp
+- ykus-logo.webp
+
+FUNCTIONALITY
+- Responsive desktop, tablet, and mobile layout.
+- Branded loading screen.
+- Country route diagram with vector flags.
+- Booking form opens a WhatsApp message addressed to +380 977 001 889.
+- Phone contacts: +380 977 001 889 and +48 519 083 936.
 - Instagram: @ykus_transfer.
 
-CONTENT TO CONFIRM BEFORE PUBLIC LAUNCH:
-- Current departure dates and exact schedule.
-- Prices, luggage conditions, and pickup/drop-off rules.
-- Any additional official Telegram contact, if one should be shown.
-
-No unconfirmed prices or obsolete November/December schedule dates are displayed.
+BEFORE PUBLIC LAUNCH
+Confirm current departure dates, prices, luggage conditions, pickup/drop-off rules, and official messaging contacts with the carrier.
